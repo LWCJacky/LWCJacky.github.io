@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>自走車MQTT控制架構 | LWCJacky</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="LWCJacky的個人主頁">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.e34b1302.css" as="style"><link rel="preload" href="/assets/js/app.1ea5bafd.js" as="script"><link rel="preload" href="/assets/js/4.82601394.js" as="script"><link rel="preload" href="/assets/js/1.505c60fa.js" as="script"><link rel="preload" href="/assets/js/14.c4e9c881.js" as="script"><link rel="prefetch" href="/assets/js/10.d26922fb.js"><link rel="prefetch" href="/assets/js/11.2dc7b8e6.js"><link rel="prefetch" href="/assets/js/12.883560cf.js"><link rel="prefetch" href="/assets/js/13.49eed823.js"><link rel="prefetch" href="/assets/js/15.132e8ffb.js"><link rel="prefetch" href="/assets/js/16.3659f162.js"><link rel="prefetch" href="/assets/js/17.860ae787.js"><link rel="prefetch" href="/assets/js/18.4a459b0d.js"><link rel="prefetch" href="/assets/js/19.0c040729.js"><link rel="prefetch" href="/assets/js/20.da17996e.js"><link rel="prefetch" href="/assets/js/21.82d7866b.js"><link rel="prefetch" href="/assets/js/22.f4c0d0f9.js"><link rel="prefetch" href="/assets/js/5.a3a6415f.js"><link rel="prefetch" href="/assets/js/6.f52a38c1.js"><link rel="prefetch" href="/assets/js/7.24a8b641.js"><link rel="prefetch" href="/assets/js/8.ff9e9859.js"><link rel="prefetch" href="/assets/js/9.b59e4c4b.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.375cdd5b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e34b1302.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-130b300a><div data-v-130b300a><div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-130b300a data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>LWCJacky</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>LWCJacky的個人主頁</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>LWCJacky</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-130b300a><header class="navbar" data-v-130b300a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo1_2.png" alt="LWCJacky" class="logo"> <span class="site-name">LWCJacky</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分類
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/26屆TDK/" class="nav-link"><i class="undefined"></i>
+  26屆TDK
+</a></li><li class="dropdown-item"><!----> <a href="/categories/工程材料/" class="nav-link"><i class="undefined"></i>
+  工程材料
+</a></li><li class="dropdown-item"><!----> <a href="/categories/電動車概論/" class="nav-link"><i class="undefined"></i>
+  電動車概論
+</a></li><li class="dropdown-item"><!----> <a href="/categories/arduino/" class="nav-link"><i class="undefined"></i>
+  arduino
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/作品/" class="nav-link"><i class="undefined"></i>
+  作品
+</a></li><li class="dropdown-item"><!----> <a href="/categories/USR/" class="nav-link"><i class="undefined"></i>
+  USR
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/Update.html" class="nav-link"><i class="iconfont reco-date"></i>
+  更新日誌
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-130b300a></div> <aside class="sidebar" data-v-130b300a><div class="personal-info-wrapper" data-v-39576ba9 data-v-130b300a><img src="/logo1_2.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    LWCJacky
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>10</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>10</h3> <h6 data-v-39576ba9>標簽</h6></div></div> <ul class="social-links" data-v-39576ba9><li class="social-item" data-v-39576ba9><i class="iconfont reco-github" style="color:#f47e60;" data-v-39576ba9></i></li></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分類
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/26屆TDK/" class="nav-link"><i class="undefined"></i>
+  26屆TDK
+</a></li><li class="dropdown-item"><!----> <a href="/categories/工程材料/" class="nav-link"><i class="undefined"></i>
+  工程材料
+</a></li><li class="dropdown-item"><!----> <a href="/categories/電動車概論/" class="nav-link"><i class="undefined"></i>
+  電動車概論
+</a></li><li class="dropdown-item"><!----> <a href="/categories/arduino/" class="nav-link"><i class="undefined"></i>
+  arduino
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/作品/" class="nav-link"><i class="undefined"></i>
+  作品
+</a></li><li class="dropdown-item"><!----> <a href="/categories/USR/" class="nav-link"><i class="undefined"></i>
+  USR
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/Update.html" class="nav-link"><i class="iconfont reco-date"></i>
+  更新日誌
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>自走車MQTT控制架構</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>LWCJacky</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-130b300a><main class="page"><section><div class="page-title"><h1 class="title">自走車MQTT控制架構</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>LWCJacky</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2022/11/9</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>作品</span><span class="tag-item" data-v-f875f3fc>以完成</span></i></div></div> <div class="theme-reco-content content__default"><div class="custom-block tip"><p class="title"></p><p>26界TDK以結束，本作品不再維護</p></div><p><img src="https://i.imgur.com/E449DZt.jpg" alt=""></p> <h3 id="專案檔案結構"><a href="#專案檔案結構" class="header-anchor">#</a> 專案檔案結構</h3> <div class="language- extra-class"><pre class="language-text"><code>
+|--PYTHON
+    |--arduino
+        |--bl300-0
+            |--bl300-0.ino #利用i2c通訊接收取球機構與發球機構的控制指令
+        |--i2cToNx
+            |--i2cToNx.ino #nx與arduino uno 透過i2c通訊測試文件
+        |--trace
+            |--trace.ino #接收尋跡模組測量訊號，並將pid計算結果透過i2c回傳
+    |--main
+        |--chassis_movement
+            |--MQTT_TEXT
+                |--text.py # 測試mqtt的檔案
+            |--chassis_movement.py #底盤控制串口輸出程式，包含校驗方法
+            |--MQTT.py #負責接收底盤控制的主程式
+            |--README.md
+        |--Order_record #腳本回放以及決策
+            |--File_operations.py #檔案操作讀取json腳本
+            |--log.py    ＃主要訂閱以及發布的主程式
+        |--pitching
+            |--MQTT_Pitching.py # 接收伺服馬達控制指令
+            |--PitchingSerial.py # 伺服馬達控制Modbus主程式
+        |--runAll
+            |--run.py # 負責啟動所有程式以及gpio讀取按鈕選擇模式
+        |--sensor
+            |--i2c.py # 控制取球機構與發球機構線性制動器主程式
+            |--MQTT_I2C.py # 接收指令
+        |--tracking_sensor
+            |--i2c_01.py #發送級接收尋跡模組偏移數據
+            |--MQTT_I2C_t.py #控制底盤運動進行校正與接收指令
+｜--Image-recognit
+    |--TDK_Chars_Recognition_yolo4-tiny_vedio_sort.py #影像辨識主程式
+    ｜--MqttUp.py 透過mqtt發送結果
+</code></pre></div><h3 id="系統設計概念"><a href="#系統設計概念" class="header-anchor">#</a> 系統設計概念</h3> <ul><li>將所有機構與計算程式分離以節點為單位
+<ul><li>透過mqtt伺服器交換所有節點的資料。</li> <li>mqtt傳輸有順序性無須而外撰寫FIFO(先進先出)。</li> <li>程式故障可立即透過看門狗程序進行自動化重起。</li></ul></li> <li>所有程式都是獨立個體不會發生依賴衝突問題
+<ul><li>所有程式只需要負責自己單一的工作。</li> <li>解決PYTHON在並行處理上不易實現的問題，最大化利用處理核心。</li></ul></li> <li>有效即時發現錯誤源
+<ul><li>所有機構的控制程式都是獨立所以錯誤也是獨立報出</li> <li>可以容易發現是哪個機構出現問題</li> <li>問題容易聚焦</li> <li>且有效避免單一錯誤造成所有程序崩潰的問題</li></ul></li></ul> <h3 id="系統建構"><a href="#系統建構" class="header-anchor">#</a> 系統建構</h3> <ul><li>MQTT
+<ul><li>本系統中最重要的核心</li> <li>本次使用EMQX進行本機安裝伺服器
+<ul><li>選用原因
+<ul><li>開源系統</li> <li>已經過長期測試相對穩定</li> <li>安裝容易</li> <li>完整度高</li> <li>免費</li></ul></li></ul></li> <li>使用本機端通訊，延遲較低</li></ul></li> <li>底盤運動
+<ul><li>使用麥克納姆輪
+<ul><li>可輕鬆實現多方向平移等高難度動作</li></ul></li> <li>購買現成底盤控制器
+<ul><li>具有PID閉還控制</li> <li>可自動完成四輪速度控制</li> <li>高速</li> <li>精準</li> <li>透過串口進行通訊</li></ul></li> <li>本次因底盤控制無位置控制功能，只能使用積分來計算位置</li> <li>缺點：時間如發生誤差，就容易發生偏移。</li> <li>避震器
+<ul><li>能夠解決高速運動急停打滑的問題</li> <li>可以緩衝取球掉落衝擊</li> <li>防止車身因地面不平而造成輪子無法完整貼合路面，定位失準等問題。</li></ul></li></ul></li> <li>車架
+<ul><li>使用2020鋁擠型
+<ul><li>鋁為目前最廣泛使用，價格便宜的結構材料</li> <li>擠出成型能夠進一步增強材料結構</li> <li>公制規格容易購買相關連接件</li> <li>實現高強度、輕量化、易修復等目的</li></ul></li></ul></li> <li>取球機構
+<ul><li>使用拱門形框架</li> <li>利用3D列印製機構
+<ul><li>材料使用petg,有更高的強度與韌性</li> <li>使用大面積的中置皮帶輪結構提供減速比的同時還能防止大扭矩造成斷裂</li></ul></li> <li>使用ARDUINO UNO控制馬達驅動器
+<ul><li>馬達使用BLDC搭配30倍減速機驅動取球機構。</li> <li>MCU會使用外部中斷計算BLDC馬達控制器回傳pulse訊號計算取球機構目前的位置。</li> <li>因為控制器的pulse訊號無相位差只有單方向，只能透過程式手動將方向反轉，只能實現半閉環控制。</li> <li>MCU內部使用EEPROM紀錄參數，可設定抬高位置以及速度</li> <li>實現透過i2c通訊直接修改取球機構之經驗參數
+<ul><li>籃球重量較輕需要慢慢取才能防止滑落到地面</li> <li>保齡球重量較重需要較高的扭矩，故速度須調整更高</li> <li>以上需要透過python依照時機動態修改</li></ul></li></ul></li></ul></li> <li>發射角度控制機構
+<ul><li>透過線性制動器驅動</li> <li>改變發射台之角度</li> <li>透過arduino控制
+<ul><li>與取球機構是同一顆MCU</li> <li>透過H橋對線性制動器進行控制</li> <li>H橋是透過兩顆具有常開/長閉腳位的繼電器組合而成</li> <li>為防止錯誤的接線以及大電流白金結合時對線圈的感應電壓干擾MCU的運作，H橋電路使用12V直流繼電器加上光偶進行隔離控制，MCU可直接透過5V 20mA左右控制26V的直流電輸出控制馬達正反轉。</li></ul></li></ul></li> <li>發球機構
+<ul><li>透過歐規V形鋁擠型和滑輪組合而成的滑軌機構</li> <li>馬達使用200W的伺服馬達驅動</li> <li>驅動器透過串口與主控電腦通訊</li> <li>通訊有自動重起的能力</li> <li>使用尼龍繩纏繞的方式進行驅動，雖然會產生一定量的偏移但能有效解決皮帶角度過小與無法拉伸的問題。</li> <li>為追求輕量化將籃球與保齡球發球機構一體化設計</li></ul></li> <li>腳本回放節點
+<ul><li>本次採用讀檔的方式進行回放
+<ul><li>系動自動讀取JSON檔案</li> <li>內容包含系統物件名稱、對應送入的資料、執行等待的時間</li> <li>使用檔案形式進行回放，能夠有效防止後續的路徑修正破壞到程式架構，且增加易讀性</li></ul></li> <li>搭配MQTT通訊的特性可直接指定對應的主題下達指令
+<ul><li>其中執行到尋跡校正時可以暫時，將底盤控制權轉交至尋跡程式</li></ul></li></ul></li></ul> <h3 id="整體控制流程"><a href="#整體控制流程" class="header-anchor">#</a> 整體控制流程</h3> <ol><li>開機</li> <li>作業系統自動啟動MQTT服務</li> <li>作業系統自動啟動PYTHON的看門狗程式</li> <li>確認所有節點都以啟動</li> <li>切換指示燈號</li> <li>等待使用者按下啟動</li> <li>判斷模式開關狀態</li> <li>依照對應模式讀取不同腳本，做出重置區啟動等應變</li> <li>發送指令開始播放腳本</li> <li>如中間按下重置按鈕看門狗程式會自動Kill所有程式並重起</li></ol></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/category/26_TDK/2022_11_9.html#專案檔案結構" class="sidebar-link reco-side-專案檔案結構" data-v-cb1513f6>專案檔案結構</a></li><li class="level-3" data-v-cb1513f6><a href="/category/26_TDK/2022_11_9.html#系統設計概念" class="sidebar-link reco-side-系統設計概念" data-v-cb1513f6>系統設計概念</a></li><li class="level-3" data-v-cb1513f6><a href="/category/26_TDK/2022_11_9.html#系統建構" class="sidebar-link reco-side-系統建構" data-v-cb1513f6>系統建構</a></li><li class="level-3" data-v-cb1513f6><a href="/category/26_TDK/2022_11_9.html#整體控制流程" class="sidebar-link reco-side-整體控制流程" data-v-cb1513f6>整體控制流程</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><!----><div class="RibbonAnimation"></div></div></div>
+    <script src="/assets/js/app.1ea5bafd.js" defer></script><script src="/assets/js/4.82601394.js" defer></script><script src="/assets/js/1.505c60fa.js" defer></script><script src="/assets/js/14.c4e9c881.js" defer></script>
+  </body>
+</html>
